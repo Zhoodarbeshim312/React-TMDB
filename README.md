@@ -1,77 +1,70 @@
-# React + TypeScript + Vite
+# 🎬 TMDB Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современное веб-приложение для просмотра фильмов, построенное на **React**, **TypeScript** и **Vite**, с использованием **The Movie Database (TMDB) API**.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Возможности
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- 🎥 Актуальные подборки фильмов — популярные, топ рейтинга, новинки
+- 🌗 Стильный тёмный интерфейс с фиолетовыми акцентами
+- 🖼️ Динамический Hero-баннер со сменой фонов и анимированным заголовком (typed.js)
+- 📱 Адаптивная вёрстка с выезжающим боковым меню
+- ⚡ Быстрая сборка и горячая перезагрузка благодаря Vite
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Технология   | Назначение                    |
+| ------------ | ----------------------------- |
+| React 19     | UI-библиотека                 |
+| TypeScript   | Типизация                     |
+| Vite         | Сборка и dev-сервер           |
+| React Router | Маршрутизация                 |
+| Axios        | Запросы к TMDB API            |
+| Typed.js     | Анимация печатающегося текста |
+| SCSS Modules | Стилизация компонентов        |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Быстрый старт
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Клонировать репозиторий
 
+```bash
+git clone https://github.com/your-username/tmdb-react.git
+cd tmdb-react
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Установить зависимости
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
+
+### 3. Настроить переменные окружения
+
+Создайте файл `.env` в корне проекта и добавьте свой TMDB API ключ:
+
+```env
+VITE_TMDB_API_KEY=ваш_api_ключ
+```
+
+> Получить ключ можно бесплатно на [themoviedb.org](https://www.themoviedb.org/settings/api)
+
+### 4. Запустить проект
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 📁 Структура проекта
