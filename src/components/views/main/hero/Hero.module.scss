@@ -1,4 +1,5 @@
 .Hero {
+  padding: 40px 0;
   min-height: 70vh;
   display: flex;
   align-items: center;
@@ -6,7 +7,6 @@
   overflow: hidden;
   background: linear-gradient(180deg, #131629 0%, #0a0d1a 100%);
 
-  // мягкое фиолетовое свечение поверх синего фона
   &::before {
     content: "";
     position: absolute;
@@ -25,10 +25,35 @@
     pointer-events: none;
   }
 
-  .content {
+  .layout {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    @media (max-width: 560px) {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .content {
+    flex: 1;
+    min-width: 280px;
     text-align: left;
+
+    @media (max-width: 560px) {
+      text-align: center;
+      min-width: 100%;
+    }
 
     p {
       display: inline-block;
@@ -42,6 +67,11 @@
       backdrop-filter: blur(6px);
       margin-bottom: 24px;
       animation: fadeUp 0.8s ease both;
+
+      @media (max-width: 560px) {
+        font-size: 13px;
+        padding: 6px 14px;
+      }
     }
 
     h1 {
@@ -53,6 +83,16 @@
       margin: 0;
       animation: fadeUp 0.8s 0.15s ease both;
 
+      @media (max-width: 900px) {
+        font-size: 38px;
+        min-height: 100px;
+      }
+
+      @media (max-width: 560px) {
+        font-size: 28px;
+        min-height: 76px;
+      }
+
       span {
         background: linear-gradient(90deg, #a78bfa, #ec4899);
         -webkit-background-clip: text;
@@ -60,7 +100,6 @@
         color: transparent;
       }
 
-      // ⬇️ убрали вложенность внутрь span, теперь на уровне h1
       :global(.typed-cursor) {
         color: #a78bfa !important;
         -webkit-text-fill-color: #a78bfa !important;
@@ -68,6 +107,186 @@
         animation: blink 0.8s step-end infinite;
       }
     }
+
+    .subtitle {
+      display: block;
+      font-size: 18px;
+      font-weight: 400;
+      color: #b0b0c3;
+      line-height: 1.6;
+      max-width: 480px;
+      padding: 0;
+      background: none;
+      border: none;
+      backdrop-filter: none;
+      margin: 20px 0 32px;
+      animation: fadeUp 0.8s 0.3s ease both;
+
+      @media (max-width: 900px) {
+        font-size: 16px;
+        max-width: 100%;
+      }
+
+      @media (max-width: 560px) {
+        font-size: 14px;
+        margin: 16px auto 24px;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      animation: fadeUp 0.8s 0.4s ease both;
+
+      @media (max-width: 560px) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .primaryBtn {
+      background: linear-gradient(90deg, #a78bfa, #ec4899);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(167, 139, 250, 0.35);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(167, 139, 250, 0.5);
+      }
+    }
+
+    .secondaryBtn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      backdrop-filter: blur(6px);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .card {
+    position: relative;
+    flex-shrink: 0;
+    width: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition:
+      transform 0.4s ease,
+      opacity 0.3s ease,
+      filter 0.3s ease;
+    opacity: 0;
+    filter: blur(4px);
+
+    &:hover {
+      transform: translateY(-6px);
+    }
+
+    @media (max-width: 900px) {
+      width: 200px;
+    }
+
+    @media (max-width: 560px) {
+      width: 160px;
+      margin: 0 auto;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  .cardVisible {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  .cardGlow {
+    position: absolute;
+    inset: -30px;
+    background: radial-gradient(
+      circle,
+      rgba(167, 139, 250, 0.35) 0%,
+      transparent 70%
+    );
+    filter: blur(30px);
+    z-index: -1;
+  }
+
+  .poster {
+    width: 100%;
+    display: block;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+  }
+
+  .cardInfo {
+    padding: 16px;
+
+    @media (max-width: 560px) {
+      padding: 10px;
+    }
+  }
+
+  .rating {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #f5c518;
+    margin-bottom: 8px;
+
+    @media (max-width: 560px) {
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 4px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @media (max-width: 560px) {
+      font-size: 13px;
+    }
+  }
+
+  .year {
+    font-size: 13px;
+    color: #9a9aad;
+
+    @media (max-width: 560px) {
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    padding: 24px 0;
+    min-height: auto;
   }
 }
 
@@ -79,6 +298,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
