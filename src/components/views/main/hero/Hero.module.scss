@@ -1,0 +1,89 @@
+.Hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #131629 0%, #0a0d1a 100%);
+
+  // мягкое фиолетовое свечение поверх синего фона
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 15% 20%,
+        rgba(139, 92, 246, 0.22) 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 80%,
+        rgba(99, 102, 241, 0.15) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+
+    p {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      color: #c4c4d4;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      backdrop-filter: blur(6px);
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.25;
+      min-height: 130px;
+      color: #fff;
+      margin: 0;
+      animation: fadeUp 0.8s 0.15s ease both;
+
+      span {
+        background: linear-gradient(90deg, #a78bfa, #ec4899);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      // ⬇️ убрали вложенность внутрь span, теперь на уровне h1
+      :global(.typed-cursor) {
+        color: #a78bfa !important;
+        -webkit-text-fill-color: #a78bfa !important;
+        font-weight: 300;
+        animation: blink 0.8s step-end infinite;
+      }
+    }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
